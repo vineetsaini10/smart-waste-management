@@ -1,0 +1,23 @@
+app:
+  name: "AI Waste Management Backend"
+  host: "0.0.0.0"
+  port: 8000
+  debug: true
+
+model:
+  cv:
+    model_path: "models/waste_classifier/mobilenetv2_waste.pth"
+    num_classes: 4
+    classes: ["wet", "dry", "plastic", "hazardous"]
+    image_size: 224
+  geo:
+    eps: 0.01  # degrees threshold for DBSCAN cluster
+    min_samples: 5
+  prediction:
+    model_path: "models/prediction_model/rf_model.pkl"
+    history_days: 30
+
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "logs/app.log"
